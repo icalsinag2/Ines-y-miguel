@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#faf7f0">
+<title>Inés & Miguel · 8 de mayo de 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf7f0; --card:#fffdf8; --ink:#3b3a33; --sage:#6f7f62; --sage-d:#4f5e45;
+    --gold:#a88b50; --line:#e4dcc8;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:56px}
+  body{margin:0;background:var(--bg);color:var(--ink);font:300 18px/1.7 'Jost',sans-serif;-webkit-text-size-adjust:100%}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;margin:0;color:var(--sage-d)}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  .wrap{max-width:560px;margin:0 auto;padding:0 1.4rem}
+  svg.deco{display:block;margin:0 auto;fill:var(--sage)}
+
+  /* Menú */
+  nav{position:sticky;top:0;z-index:10;background:rgba(250,247,240,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);
+    display:flex;gap:.2rem;overflow-x:auto;padding:.3rem .6rem;justify-content:center;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{flex:none;padding:.6rem .8rem;text-decoration:none;font-size:.95rem;color:var(--sage-d);font-weight:400}
+
+  /* Portada */
+  .hero{text-align:center;padding:2.2rem 0 3rem}
+  .small{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--gold)}
+  .photo{position:relative;background:linear-gradient(160deg,#e8e4d3,#cfd6c2);background-size:cover;background-position:center;overflow:hidden}
+  .photo:not(.has)::after{content:"Aquí irá vuestra foto";position:absolute;inset:0;display:grid;place-content:center;color:var(--sage-d);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.3rem}
+  .arch{width:min(300px,78vw);aspect-ratio:3/4;margin:1.4rem auto 0;border-radius:999px 999px 14px 14px;border:1px solid var(--gold);outline:1px solid var(--gold);outline-offset:8px}
+  .hero h1{font-size:clamp(3rem,15vw,4.6rem);line-height:1;margin-top:2rem}
+  .hero h1 i{font-weight:400;color:var(--gold);font-size:.7em}
+  .date{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--ink);margin:.8rem 0 1.4rem}
+  .count{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;max-width:340px;margin:0 auto}
+  .count div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.7rem .2rem}
+  .count b{display:block;font:500 2rem/1.1 'Cormorant Garamond',serif;color:var(--sage-d)}
+  .count span{font-size:.72rem;letter-spacing:.08em;color:var(--sage)}
+  .count-end{grid-column:1/-1;font:italic 1.8rem 'Cormorant Garamond',serif}
+
+  /* Secciones */
+  section{padding:3rem 0;text-align:center}
+  section.alt{background:#f3eee1}
+  section h2{font-size:2.3rem;margin:.6rem 0 .3rem}
+  .intro{margin:.2rem auto 1.6rem;max-width:34ch}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.6rem 1.3rem;display:grid;gap:.3rem;justify-items:center}
+  .card h3{font-size:1.7rem}
+  .when{color:var(--gold);font-weight:500;letter-spacing:.04em}
+  .actions{display:grid;gap:.7rem;width:100%;margin-top:1rem}
+  .btn{display:block;width:100%;padding:.95rem 1rem;border-radius:999px;text-decoration:none;font:500 1rem 'Jost',sans-serif;text-align:center;border:1px solid var(--sage-d);background:transparent;color:var(--sage-d);cursor:pointer}
+  .btn.main{background:var(--sage-d);color:#fff}
+  .btn:active{transform:scale(.98)}
+  .note{font-size:.95rem;color:#6a685d;margin-top:.8rem}
+
+  /* Regalo */
+  .iban{font:500 1.15rem/1.4 'Jost',sans-serif;letter-spacing:.06em;word-break:break-all;background:#f6f1e4;border-radius:10px;padding:.8rem;width:100%;user-select:all}
+  #ok{min-height:1.4em;color:var(--sage-d);font-size:.95rem}
+
+  /* Foto final */
+  .wide{width:100%;aspect-ratio:4/3;border-radius:16px;margin-top:1.4rem}
+  footer{text-align:center;padding:2.5rem 1rem 3rem}
+  footer p{font:italic 1.6rem 'Cormorant Garamond',serif;color:var(--sage-d);margin:.8rem 0 0}
+
+  @media (min-width:700px){.actions{grid-template-columns:1fr 1fr}.actions.one{grid-template-columns:1fr}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+    
+<!-- Decoraciones reutilizables: hoja de laurel y florecita 
+ <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="laurel" viewBox="0 0 220 40">
+      <path d="M6 22 Q110 4 214 22" fill="none" stroke="#6f7f62" stroke-width="1.4"/>
+      <g id="l"><ellipse cx="30" cy="17" rx="10" ry="4" transform="rotate(-35 30 17)"/><ellipse cx="30" cy="25" rx="10" ry="4" transform="rotate(35 30 25)"/></g>
+      <use href="#l" x="30"/><use href="#l" x="60"/><use href="#l" x="90"/><use href="#l" x="120"/><use href="#l" x="150"/>
+    </symbol>
+    <symbol id="flor" viewBox="-14 -14 28 28">
+      <g fill="#fff" stroke="#cdbf9c" stroke-width=".8">
+        <ellipse cx="0" cy="-7" rx="4.2" ry="7"/><ellipse cx="0" cy="-7" rx="4.2" ry="7" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-7" rx="4.2" ry="7" transform="rotate(144)"/><ellipse cx="0" cy="-7" rx="4.2" ry="7" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-7" rx="4.2" ry="7" transform="rotate(288)"/>
+      </g>
+      <circle r="2.6" fill="#c9a85c"/>
+    </symbol>
+  </defs>
+</svg> -->
+
+<nav aria-label="Secciones">
+  <a href="#ceremonia">Ceremonia</a>
+  <a href="#convite">Convite</a>
+  <a href="#asistencia">Asistencia</a>
+  <a href="#bus">Autobús</a>
+  <a href="#regalo">Regalo</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="small">¡Nos casamos!</div>
+    <div class="photo arch" id="img-portada" role="img" aria-label="Foto de Inés y Miguel"></div>
+    <h1>Inés <i>&</i> Miguel</h1>
+    <div class="date">Sábado, 8 de mayo de 2027</div>
+    <div class="count" id="count" aria-label="Cuenta atrás hasta la boda"></div>
+    <svg class="deco" width="230" height="42" style="margin-top:2rem" aria-hidden="true"><use href="#laurel"/></svg>
+  </div>
+</header>
+
+<section id="ceremonia">
+  <div class="wrap">
+    <svg class="deco" width="30" height="30" aria-hidden="true"><use href="#flor"/></svg>
+    <h2>La ceremonia</h2>
+    <p class="intro">Todo empieza aquí. Nos encantaría que estuvierais a nuestro lado para vivir uno de los momentos más especiales de nuestras vidas.</p>
+    <div class="card">
+      <h3 id="cer-nombre"></h3>
+      <div class="when" id="cer-cuando"></div>
+      <div id="cer-dir"></div>
+      <div class="actions">
+        <a class="btn main" id="cer-mapa" target="_blank" rel="noopener" href="#">Cómo llegar</a>
+        <a class="btn" id="cer-cal" target="_blank" rel="noopener" href="#">Añadir al calendario</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="convite" class="alt">
+  <div class="wrap">
+    <svg class="deco" width="30" height="30" aria-hidden="true"><use href="#flor"/></svg>
+    <h2>El convite</h2>
+    <p class="intro">La celebración continúa.</p>
+    <div class="card">
+      <h3 id="ban-nombre"></h3>
+      <div class="when" id="ban-cuando"></div>
+      <div id="ban-dir"></div>
+      <div class="actions">
+        <a class="btn main" id="ban-mapa" target="_blank" rel="noopener" href="#">Cómo llegar</a>
+        <a class="btn" id="ban-cal" target="_blank" rel="noopener" href="#">Añadir al calendario</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="asistencia">
+  <div class="wrap">
+    <svg class="deco" width="30" height="30" aria-hidden="true"><use href="#flor"/></svg>
+    <h2>Confirma tu asistencia</h2>
+    <p class="intro">Dinos si vienes, si te acompaña alguien y si tienes alguna alergia o intolerancia.</p>
+    <div class="card">
+      <div class="actions one">
+        <a class="btn main" id="form-asistencia" target="_blank" rel="noopener" href="#">Confirmar asistencia</a>
+      </div>
+      <p class="note" id="limite"></p>
+    </div>
+  </div>
+</section>
+
+<section id="bus" class="alt">
+  <div class="wrap">
+    <svg class="deco" width="30" height="30" aria-hidden="true"><use href="#flor"/></svg>
+    <h2>Autobús</h2>
+    <p class="intro">Habrá autobús para que vayas y vuelvas sin preocuparte. Reserva tu plaza aquí.</p>
+    <div class="card">
+      <div class="actions one">
+        <a class="btn main" id="form-bus" target="_blank" rel="noopener" href="#">Reservar plaza de autobús</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="regalo">
+  <div class="wrap">
+    <svg class="deco" width="30" height="30" aria-hidden="true"><use href="#flor"/></svg>
+    <h2>Vuestro regalo</h2>
+    <p class="intro">Para nosotros el mejor regalo es poder contar con vuestra compañía en este día tan especial. Para aquellos que queráis ayudarnos a comenzar esta nueva familia os facilitamos nuestro número de cuenta:</p>
+    <div class="card">
+      <div id="titular"></div>
+      <div class="iban" id="iban"></div>
+      <div class="actions one">
+        <button class="btn main" id="copiar" type="button">Copiar número de cuenta</button>
+      </div>
+      <div id="ok" role="status"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <svg class="deco" width="230" height="42" aria-hidden="true"><use href="#laurel"/></svg>
+    <div class="photo wide" id="img-final" role="img" aria-label="Otra foto de Inés y Miguel"></div>
+    <p>Os esperamos con mucha ilusión</p>
+    <div class="small" style="margin-top:.4rem">Inés & Miguel · 8 · 5 · 2027</div>
+  </div>
+</footer>
+
+<script>
+/* =====================================================
+   AQUÍ CAMBIAS TODO LO IMPORTANTE
+   ===================================================== */
+const CONFIG = {
+  fecha: "2027-05-08T12:00:00",          // inicio de la ceremonia (para la cuenta atrás)
+  limiteRespuesta: "Por favor, responde antes del 1 de marzo de 2027.",   // pon "" si no quieres este texto
+
+  // FOTOS: sube los archivos a la carpeta "img" de tu repositorio
+  imagenes: {
+    portada: "img/portada.jpg",   // foto vertical, cabe mejor en la portada
+    final:   "img/final.jpg"      // foto horizontal
+  },
+
+  // FORMULARIOS de Google (Enviar > icono de enlace)
+  formularios: {
+    asistencia: "https://forms.gle/orEdLTBDU9911uYGA",
+    bus:        "https://forms.gle/VQHUiHrsQsYntcRF6"
+  },
+
+  // REGALO
+  regalo: {
+    titular: "Inés Calsina y Miguel Gallego",
+    iban: "ES66 0081 2719 2200 0382 0591"
+  },
+
+  // LUGARES (revisa las horas y las direcciones)
+  ceremonia: {
+    nombre: "Iglesia de Nuestra Señora de la Bonanova",
+    direccion: "Sant Gervasi, Barcelona",
+    cuando: "8 de mayo de 2027 · 13:00 h",
+    mapa: "https://www.google.com/maps/search/?api=1&query=Iglesia+Nuestra+Se%C3%B1ora+de+la+Bonanova+Barcelona",
+    inicio: "20270508T130000", fin: "20270508T143000"
+  },
+  convite: {
+    nombre: "Mas Vidrier",
+    direccion: "Torrelles de Llobregat, Barcelona",
+    cuando: "8 de mayo de 2027 · 15:00 h",
+    mapa: "https://www.google.com/maps/search/?api=1&query=Mas+Vidrier",
+    inicio: "20270508T150000", fin: "20270509T240000"
+  }
+};
+
+/* ---------- Código (no hace falta modificarlo) ---------- */
+const $ = id => document.getElementById(id);
+
+// Fotos (si el archivo no existe, se ve un fondo suave con un aviso)
+for (const [id, src] of Object.entries(CONFIG.imagenes)) {
+  const el = $("img-" + id); if (!el || !src) continue;
+  const t = new Image();
+  t.onload = () => { el.style.backgroundImage = `url("${src}")`; el.classList.add("has"); };
+  t.src = src;
+}
+
+// Formularios y textos
+$("form-asistencia").href = CONFIG.formularios.asistencia;
+$("form-bus").href = CONFIG.formularios.bus;
+$("limite").textContent = CONFIG.limiteRespuesta;
+$("titular").textContent = "Titular: " + CONFIG.regalo.titular;
+$("iban").textContent = CONFIG.regalo.iban;
+
+function lugar(p, c, etiqueta){
+  $(p+"-nombre").textContent = c.nombre;
+  $(p+"-cuando").textContent = c.cuando;
+  $(p+"-dir").textContent = c.direccion;
+  $(p+"-mapa").href = c.mapa;
+  $(p+"-cal").href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" +
+    encodeURIComponent(etiqueta + " · Boda de Inés y Miguel") +
+    "&dates=" + c.inicio + "/" + c.fin + "&ctz=Europe/Madrid&location=" + encodeURIComponent(c.nombre + ", " + c.direccion);
+}
+lugar("cer", CONFIG.ceremonia, "Ceremonia");
+lugar("ban", CONFIG.convite, "Convite");
+
+// Copiar IBAN
+$("copiar").addEventListener("click", async () => {
+  const txt = CONFIG.regalo.iban;
+  try { await navigator.clipboard.writeText(txt); $("ok").textContent = "Número de cuenta copiado."; }
+  catch {
+    const r = document.createRange(); r.selectNodeContents($("iban"));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    $("ok").textContent = "Selecciónalo y cópialo manualmente.";
+  }
+});
+
+// Cuenta atrás
+const target = new Date(CONFIG.fecha).getTime();
+const box = $("count");
+const pad = n => String(n).padStart(2, "0");
+function tick(){
+  let d = target - Date.now();
+  if (d <= 0) { box.innerHTML = '<span class="count-end">¡Hoy es el gran día!</span>'; return false; }
+  const days = Math.floor(d / 864e5); d %= 864e5;
+  const h = Math.floor(d / 36e5); d %= 36e5;
+  const m = Math.floor(d / 6e4), s = Math.floor((d % 6e4) / 1000);
+  box.innerHTML = `<div><b>${days}</b><span>días</span></div><div><b>${pad(h)}</b><span>horas</span></div><div><b>${pad(m)}</b><span>min</span></div><div><b>${pad(s)}</b><span>seg</span></div>`;
+  return true;
+}
+if (tick()) { const t = setInterval(() => { if (!tick()) clearInterval(t); }, 1000); }
+</script>
+</body>
+</html>
